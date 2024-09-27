@@ -15,6 +15,7 @@ ${SUBMIT_BUTTON}              xpath=//button[text()='สมัครสมาช
 ${OTP_PAGE_TEXT}              ระบบได้ส่งรหัส OTP ไปยังเบอร์โทรศัพท์
 ${OPTCODE}                    name = otpCode
 ${SUBMIT_OTP}                 xpath=//button[text()='ยืนยัน OTP']
+${expectedOtpText}            name=expectedOtpText
 
 
 *** Keywords ***
@@ -47,7 +48,9 @@ Submit Registration
 
 Verify OTP Page Displayed
     CommonKeywords.Wait until page contains element then verify text    ${OTP_PAGE_TEXT}
-    Sleep    2s
+    Sleep    1s
+    ${actualOtpText}=    Get Text    ${OTP_PAGE_TEXT}  # ดึงข้อความจาก OTP page
+    Should Be Equal    ${actualOtpText}    ${expectedOtpText}    Page OTP text does not match expected!  # ตรวจสอบว่าข้อความตรงกันหรือไม่
 
 Fill OTP code
     [Arguments]    ${otpCode}

@@ -14,4 +14,4 @@ As a user, I want to register successfully
     RegisterPage.Fill Registration Form    ${firstName}    ${lastName}    ${email}    ${phoneNumber}    ${newPassword}    ${confirmPassword}
     RegisterPage.Click Checkbox
     RegisterPage.Submit Registration
-    OTPPage.Verify OTP Page Displayed
+    OTPPage.Verify OTP Page Displayed 
